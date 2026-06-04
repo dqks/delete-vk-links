@@ -1,0 +1,17 @@
+{
+  "name": "Delete VK links",
+  "description": "Deletes unnecessary links from VK site",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "./src/shared/assets/logo.jpg"
+  },
+  "content_scripts": [
+    {
+      "all_frames": true,
+      "matches": ["https://*.vk.com/*"],
+      "js": ["./src/content/content.js"]
+    }
+  ]
+}
