@@ -10,7 +10,7 @@
   "content_scripts": [
     {
       "all_frames": true,
-      "matches": ["https://*.vk.com/*"],
+      "matches": ["https://vk.com/*"],
       "js": ["./src/content/content.js"]
     }
   ]

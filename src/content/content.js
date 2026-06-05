@@ -1,15 +1,16 @@
-let isDeleted = false
-
-const deleteLinks = () => {
-    const newsElement = document.querySelector('a[href="/feed"]')
-
-    if (newsElement) {
-        isDeleted = true
-        newsElement.remove()
-        clearInterval(deleteLinks)
-        return null;
+const mutationObserver = new MutationObserver(mutations => {
+    for (let mutation of mutations) {
+        for (let node of mutation.addedNodes) {
+            for (let elem of node.querySelectorAll("a[href='/feed']")) {
+                elem.remove();
+            }
+        }
     }
-}
+})
 
-setInterval(deleteLinks, 300)
-
+mutationObserver.observe(document.body, {
+    childList: true,
+    subtree: true,
+    attributes: true,
+    characterData: true
+})
